@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Product</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f6fa;
+            color: #333;
+        }
+        .parentContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+            color: #2d98da;
+        }
+        .error-message {
+            color: #e74c3c;
+            background: #fdecea;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: 500;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+            transition: 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #2d98da;
+            background: #fff;
+            outline: none;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group select {
+            padding: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background: #2d98da;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #1d78b5;
+        }
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="parentContainer">
+    <div class="form-container">
+        <h2>Create New Product</h2>
+        
+        <% if (locals.error) { %>
+            <div class="error-message">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form 
+            action="/admin/products/create" 
+            class="container" 
+            method="post" 
+            enctype="multipart/form-data"
+        >
+        <div class="mb-3">
+            <label for="productTitle" class="form-label" style="font-weight: bold;">
+                <i class="fas fa-tag me-2"></i>Product Title
+            </label>
+            <select id="productTitle" name="title" class="form-select" required>
+                <option value="" disabled selected>Select a product title</option>
+                <option>2 Piece - Embroidered Khaddar Suit</option>
+                <option>2 Piece - Embroidered Cambric Suit</option>
+                <option>3 Piece - Embroidered Khaddar Suit</option>
+                <option>3 Piece - Embroidered Karandi Suit</option>
+                <option>3 Piece - Embroidered Jacquard Suit</option>
+                <option>3 Piece - Embroidered Cotton Jacquard Suit</option>
+                <option>3 Piece - Embroidered Cambric Suit</option>
+                <option>2 Piece - Printed Khaddar Suit</option>
+                <option>2 Piece - Embroidered Zari Khaddar Suit</option>
+                <option>Printed Light Khaddar Suit</option>
+                <option>Embroidered Raw Silk Waistcoat</option>
+                <option>Light Khaddar Suit</option>
+                <option>Wash & Wear Suit</option>
+                <option>Wool Blended Suit</option>
+                <option>Embroidered Wash & Wear Suit</option>
+                <option>Embroidered Cotton Dobby Suit</option>
+                <option>Premium Wash & Wear Suit</option>
+                <option>Embroidered Tropical Fabric Waistcoat</option>
+                <option>2 Piece - Printed Raw Silk Suit</option>
+                <option>Cambric Suit</option>
+                <option>Embroidered Jacquard Waistcoat</option>
+                <option>Embroidered Velvet Kaftan</option>
+                <option>Printed Cotton Satin Top</option>
+                <option>Off White Mules</option>
+                <option>Black Faux Leather Pumps</option>
+                <option>Brown Faux Leather Pumps</option>
+                <option>Black Top Handle Bag</option>
+                <option>Green Faux Leather Pumps</option>
+                <option>Black Tote Bag</option>
+                <option>Embellished Clutch</option>
+                <!-- New Titles -->
+                <option>WILD ROSE</option>
+                <option>Velvet Rose</option>
+                <option>Illusion</option>
+                <option>Icon</option>
+                <option>Pleasure</option>
+                <option>Bohemia</option>
+                <option>Impulse</option>
+                <option>Charm</option>
+                <option>Dream</option>
+                <option>Dusk</option>
+                <option>Fierce</option>
+                <option>Bella</option>
+                <option>Allure</option>
+                <option>Gravity</option>
+                <option>Obsidian</option>
+            </select>
+            <div class="invalid-feedback">
+                Please select a product title.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="productDescription" class="form-label" style="font-weight: bold;">
+                <i class="fas fa-comment-dots me-2"></i>Description
+            </label>
+            <select id="productDescription" name="description" class="form-select">
+                <option value="" disabled selected>Select a description</option>
+                <option>RTW Winter - New Arrivals</option>
+                <option>Limited Edition - New Arrivals</option>
+                <option>RTW Festive - New Arrivals</option>
+                <option>Men's Stitched Limited Edition</option>
+                <option>Men's Stitched Winter '24</option>
+                <option>Men’s Unstitched Winter ‘24</option>
+                <option>Festive ‘24</option>
+                <option>Winter ‘24</option>
+                <option>Fall / Winter ‘24</option>
+                <!-- New Descriptions -->
+                <option>Men's Perfume</option>
+                <option>Women’s Body Mist</option>
+                <option>Women's Perfume</option>
+                <option>For Him</option>
+                <option>For Her</option>
+            </select>
+            <div class="invalid-feedback">
+                Please select a product description.
+            </div>
+        </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input 
+                    name="price" 
+                    type="number" 
+                    class="form-control" 
+                    value="<%= locals.oldInput ? oldInput.price : 5000 %>" 
+                    required 
+                />
+            </div>
+
+            <div class="form-group">
+                <label>Category</label>
+                <select name="category">
+                    <% categories.forEach(category => { %>
+                        <option value="<%= category._id %>"><%= category.title %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" style="font-weight: bold;">
+                    <i class="fas fa-star me-2"></i>Featured Product
+                </label>
+                <div class="d-flex">
+                    <div class="form-check me-3">
+                        <input type="checkbox" id="featuredYes" name="isFeatured" class="form-check-input">
+                        <label class="form-check-label" for="featuredYes">isFeatured</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="file">Picture</label>
+                <input 
+                    name="file" 
+                    type="file" 
+                    class="form-control" 
+                    accept="image/jpeg,image/png,image/gif,image/webp"
+                />
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn">Create Record</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
